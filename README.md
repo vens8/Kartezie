@@ -8,3 +8,4 @@ As part of final DBMS project
 - View Cart
 - Buy Now
 - Checkout
+- Register
