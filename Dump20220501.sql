@@ -33,6 +33,7 @@ CREATE TABLE `address` (
   `pincode` char(6) DEFAULT NULL,
   PRIMARY KEY (`address_id`),
   KEY `addressCustomerID` (`customer_id`),
+  KEY `city_index` (`city`),
   CONSTRAINT `addressCustomerID` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -46,6 +47,27 @@ LOCK TABLES `address` WRITE;
 INSERT INTO `address` VALUES ('addr_001','cust_044','9','Manufacturers','Agraharam','Andhra Pradesh','India','532663'),('addr_002','cust_029','94797','Starling','R S','Gujarat','India','395003'),('addr_003','cust_131','56','Sycamore','R S','Gujarat','India','395003'),('addr_004','cust_058','098','Division','Agraharam','Andhra Pradesh','India','532663'),('addr_005','cust_059','9661','Butternut','R S','Gujarat','India','395003'),('addr_006','cust_023','02549','Independence','Agraharam','Andhra Pradesh','India','532663'),('addr_007','cust_110','1','Chive','R S','Gujarat','India','395003'),('addr_008','cust_030','3','Gulseth','Agraharam','Andhra Pradesh','India','532663'),('addr_009','cust_168','146','Northview','R S','Gujarat','India','395003'),('addr_010','cust_104','6041','Oxford','Agraharam','Andhra Pradesh','India','532663'),('addr_011','cust_087','012','Ronald Regan','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_012','cust_172','08652','Manitowish','R S','Gujarat','India','395003'),('addr_013','cust_124','6147','Roxbury','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_014','cust_126','242','Merrick','R S','Gujarat','India','395003'),('addr_015','cust_059','6','Merrick','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_016','cust_129','011','Heath','R S','Gujarat','India','395003'),('addr_017','cust_123','3','Ohio','R S','Gujarat','India','395003'),('addr_018','cust_047','43304','Darwin','Agraharam','Andhra Pradesh','India','532663'),('addr_019','cust_067','11171','Spohn','Agraharam','Andhra Pradesh','India','532663'),('addr_020','cust_057','38096','Jackson','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_021','cust_113','3283','Melby','R S','Gujarat','India','395003'),('addr_022','cust_019','42','Buell','Agraharam','Andhra Pradesh','India','532663'),('addr_023','cust_154','72353','Basil','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_024','cust_114','3300','Acker','R S','Gujarat','India','395003'),('addr_025','cust_175','4','Elmside','R S','Gujarat','India','395003'),('addr_026','cust_173','16','Maywood','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_027','cust_134','2746','Holy Cross','R S','Gujarat','India','395003'),('addr_028','cust_166','513','Johnson','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_029','cust_076','52','Grover','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_030','cust_059','47','Fieldstone','Agraharam','Andhra Pradesh','India','532663'),('addr_031','cust_190','04','Steensland','R S','Gujarat','India','395003'),('addr_032','cust_007','6','Nobel','R S','Gujarat','India','395003'),('addr_033','cust_017','67','Prairie Rose','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_034','cust_171','79','Scott','Agraharam','Andhra Pradesh','India','532663'),('addr_035','cust_126','60860','Meadow Vale','Agraharam','Andhra Pradesh','India','532663'),('addr_036','cust_086','7996','Basil','Agraharam','Andhra Pradesh','India','532663'),('addr_037','cust_042','93554','Heath','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_038','cust_145','05338','David','R S','Gujarat','India','395003'),('addr_039','cust_120','8','Sutherland','R S','Gujarat','India','395003'),('addr_040','cust_185','400','Miller','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_041','cust_035','31561','Warbler','Agraharam','Andhra Pradesh','India','532663'),('addr_042','cust_175','79055','Hollow Ridge','Agraharam','Andhra Pradesh','India','532663'),('addr_043','cust_076','21','Sycamore','R S','Gujarat','India','395003'),('addr_044','cust_074','6025','North','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_045','cust_062','6','Lighthouse Bay','Agraharam','Andhra Pradesh','India','532663'),('addr_046','cust_053','9887','John Wall','R S','Gujarat','India','395003'),('addr_047','cust_190','9','Del Sol','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_048','cust_180','4','Autumn Leaf','Agraharam','Andhra Pradesh','India','532663'),('addr_049','cust_014','614','Lunder','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_050','cust_102','25800','Hoepker','Agraharam','Andhra Pradesh','India','532663'),('addr_051','cust_070','22','Browning','R S','Gujarat','India','395003'),('addr_052','cust_192','49355','Esker','Agraharam','Andhra Pradesh','India','532663'),('addr_053','cust_082','54','Mosinee','R S','Gujarat','India','395003'),('addr_054','cust_008','05196','Bonner','R S','Gujarat','India','395003'),('addr_055','cust_152','1','Thompson','R S','Gujarat','India','395003'),('addr_056','cust_127','94','Scofield','Agraharam','Andhra Pradesh','India','532663'),('addr_057','cust_153','05','Troy','Agraharam','Andhra Pradesh','India','532663'),('addr_058','cust_024','9163','Warrior','R S','Gujarat','India','395003'),('addr_059','cust_110','3','Dottie','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_060','cust_142','977','Randy','Agraharam','Andhra Pradesh','India','532663'),('addr_061','cust_181','759','Knutson','Agraharam','Andhra Pradesh','India','532663'),('addr_062','cust_038','83','Lighthouse Bay','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_063','cust_181','53094','Southridge','R S','Gujarat','India','395003'),('addr_064','cust_141','56337','Macpherson','Agraharam','Andhra Pradesh','India','532663'),('addr_065','cust_061','65','Bunting','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_066','cust_034','4','Manufacturers','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_067','cust_181','22676','Nova','R S','Gujarat','India','395003'),('addr_068','cust_065','3012','Mifflin','R S','Gujarat','India','395003'),('addr_069','cust_196','83','Everett','Agraharam','Andhra Pradesh','India','532663'),('addr_070','cust_034','83','Shasta','Agraharam','Andhra Pradesh','India','532663'),('addr_071','cust_056','4','Prairie Rose','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_072','cust_122','2','Porter','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_073','cust_175','185','Ridgeway','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_074','cust_063','14579','Towne','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_075','cust_046','53','Porter','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_076','cust_035','31172','Sachtjen','R S','Gujarat','India','395003'),('addr_077','cust_105','0600','Dryden','Agraharam','Andhra Pradesh','India','532663'),('addr_078','cust_125','39801','Hudson','R S','Gujarat','India','395003'),('addr_079','cust_046','558','Warbler','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_080','cust_164','563','Karstens','R S','Gujarat','India','395003'),('addr_081','cust_016','7517','Manley','R S','Gujarat','India','395003'),('addr_082','cust_046','57458','Hovde','R S','Gujarat','India','395003'),('addr_083','cust_137','60','Crowley','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_084','cust_045','88','Maple Wood','R S','Gujarat','India','395003'),('addr_085','cust_167','9366','Commercial','R S','Gujarat','India','395003'),('addr_086','cust_018','41','Boyd','Agraharam','Andhra Pradesh','India','532663'),('addr_087','cust_126','81704','Johnson','Agraharam','Andhra Pradesh','India','532663'),('addr_088','cust_096','661','Doe Crossing','Agraharam','Andhra Pradesh','India','532663'),('addr_089','cust_179','781','Tony','Agraharam','Andhra Pradesh','India','532663'),('addr_090','cust_159','199','Commercial','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_091','cust_150','11','Portage','Agraharam','Andhra Pradesh','India','532663'),('addr_092','cust_063','4','Southridge','R S','Gujarat','India','395003'),('addr_093','cust_109','3205','Steensland','R S','Gujarat','India','395003'),('addr_094','cust_074','69031','Almo','R S','Gujarat','India','395003'),('addr_095','cust_033','10','Lighthouse Bay','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_096','cust_158','8','Erie','Agraharam','Andhra Pradesh','India','532663'),('addr_097','cust_187','0','Lillian','R S','Gujarat','India','395003'),('addr_098','cust_133','99060','Oxford','R S','Gujarat','India','395003'),('addr_099','cust_105','0','Arkansas','Agraharam','Andhra Pradesh','India','532663'),('addr_100','cust_012','3','Anzinger','Agraharam','Andhra Pradesh','India','532663'),('addr_101','cust_072','9358','Bowman','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_102','cust_062','2','Prairie Rose','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_103','cust_169','422','Dawn','Agraharam','Andhra Pradesh','India','532663'),('addr_104','cust_036','518','Starling','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_105','cust_085','79','Magdeline','Agraharam','Andhra Pradesh','India','532663'),('addr_106','cust_157','40404','Kensington','Agraharam','Andhra Pradesh','India','532663'),('addr_107','cust_191','528','Main','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_108','cust_158','20240','Clemons','R S','Gujarat','India','395003'),('addr_109','cust_132','71977','Meadow Vale','R S','Gujarat','India','395003'),('addr_110','cust_072','3','Russell','Agraharam','Andhra Pradesh','India','532663'),('addr_111','cust_145','74078','Portage','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_112','cust_030','2605','Dakota','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_113','cust_007','1','Luster','R S','Gujarat','India','395003'),('addr_114','cust_124','33','Sloan','R S','Gujarat','India','395003'),('addr_115','cust_177','07898','Monterey','Agraharam','Andhra Pradesh','India','532663'),('addr_116','cust_141','6252','Dottie','Agraharam','Andhra Pradesh','India','532663'),('addr_117','cust_181','822','Nova','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_118','cust_067','05718','Toban','R S','Gujarat','India','395003'),('addr_119','cust_077','70228','Forest','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_120','cust_144','0495','Manley','R S','Gujarat','India','395003'),('addr_121','cust_055','63','Moland','Agraharam','Andhra Pradesh','India','532663'),('addr_122','cust_108','1','Manitowish','R S','Gujarat','India','395003'),('addr_123','cust_028','7','Larry','R S','Gujarat','India','395003'),('addr_124','cust_092','82107','Kropf','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_125','cust_066','74911','International','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_126','cust_011','2','Farmco','Agraharam','Andhra Pradesh','India','532663'),('addr_127','cust_119','44','Memorial','Agraharam','Andhra Pradesh','India','532663'),('addr_128','cust_130','4','Gina','R S','Gujarat','India','395003'),('addr_129','cust_141','29','Marcy','Agraharam','Andhra Pradesh','India','532663'),('addr_130','cust_081','2','Cody','Agraharam','Andhra Pradesh','India','532663'),('addr_131','cust_050','72','Pearson','R S','Gujarat','India','395003'),('addr_132','cust_030','0313','Stang','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_133','cust_126','610','Alpine','R S','Gujarat','India','395003'),('addr_134','cust_200','83','Leroy','R S','Gujarat','India','395003'),('addr_135','cust_019','03140','Vermont','Agraharam','Andhra Pradesh','India','532663'),('addr_136','cust_144','13','Shopko','Agraharam','Andhra Pradesh','India','532663'),('addr_137','cust_143','9','Dakota','Agraharam','Andhra Pradesh','India','532663'),('addr_138','cust_076','5','American','R S','Gujarat','India','395003'),('addr_139','cust_067','3','David','R S','Gujarat','India','395003'),('addr_140','cust_130','875','Oakridge','R S','Gujarat','India','395003'),('addr_141','cust_081','6','Arkansas','R S','Gujarat','India','395003'),('addr_142','cust_091','495','Charing Cross','Agraharam','Andhra Pradesh','India','532663'),('addr_143','cust_140','56395','7th','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_144','cust_177','482','Anniversary','R S','Gujarat','India','395003'),('addr_145','cust_070','0','Pearson','R S','Gujarat','India','395003'),('addr_146','cust_170','14','Anderson','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_147','cust_025','17398','Service','Agraharam','Andhra Pradesh','India','532663'),('addr_148','cust_070','267','Rutledge','R S','Gujarat','India','395003'),('addr_149','cust_019','5257','Reindahl','Sadar Bazar','Uttar Pradesh','India','281002'),('addr_150','cust_135','3','Dryden','R S','Gujarat','India','395003');
 /*!40000 ALTER TABLE `address` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary view structure for view `average_view`
+--
+
+DROP TABLE IF EXISTS `average_view`;
+/*!50001 DROP VIEW IF EXISTS `average_view`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `average_view` AS SELECT 
+ 1 AS `product_id`,
+ 1 AS `category_id`,
+ 1 AS `company_id`,
+ 1 AS `current_price`,
+ 1 AS `discount`,
+ 1 AS `tags`,
+ 1 AS `quantity`,
+ 1 AS `product_name`,
+ 1 AS `image`,
+ 1 AS `avg_price`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `bank`
@@ -169,7 +191,8 @@ CREATE TABLE `customers` (
   `full_name` varchar(100) DEFAULT NULL,
   `DOB` date DEFAULT NULL,
   `phone_no` char(10) DEFAULT NULL,
-  PRIMARY KEY (`customer_id`)
+  PRIMARY KEY (`customer_id`),
+  KEY `cust_id_index` (`customer_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -207,6 +230,20 @@ LOCK TABLES `description` WRITE;
 /*!40000 ALTER TABLE `description` DISABLE KEYS */;
 /*!40000 ALTER TABLE `description` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary view structure for view `discounted_view`
+--
+
+DROP TABLE IF EXISTS `discounted_view`;
+/*!50001 DROP VIEW IF EXISTS `discounted_view`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `discounted_view` AS SELECT 
+ 1 AS `product_name`,
+ 1 AS `current_price`,
+ 1 AS `discount`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `login`
@@ -256,6 +293,7 @@ CREATE TABLE `product` (
   PRIMARY KEY (`product_id`),
   KEY `productCategoryID` (`category_id`),
   KEY `productCompanyID` (`company_id`),
+  KEY `prod_id_index` (`product_id`),
   CONSTRAINT `productCategoryID` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`),
   CONSTRAINT `productCompanyID` FOREIGN KEY (`company_id`) REFERENCES `company` (`company_id`),
   CONSTRAINT `productQuantity` CHECK ((`quantity` >= 0))
@@ -268,7 +306,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES ('prod_001','catg_005','comp_011',500,9,'#shirt',500,'shirt','images/shirt.png'),('prod_002','catg_002','comp_005',400,9,'#dals',500,'dals','images/dals.png'),('prod_003','catg_006','comp_006',400,5,'#toycar',500,'toy car','images/toy car.png'),('prod_004','catg_007','comp_002',1500,5,'#perfume',500,'perfume','images/perfume.png'),('prod_005','catg_006','comp_006',350,5,'#ludo',500,'ludo','images/ludo.png'),('prod_006','catg_007','comp_015',2000,5,'#watch',500,'watch','images/watch.png'),('prod_007','catg_001','comp_009',35000,6,'#bed',500,'bed','images/bed.png'),('prod_008','catg_005','comp_014',1000,9,'#jeans',500,'jeans','images/jeans.png'),('prod_009','catg_005','comp_019',400,9,'#skirt',500,'skirt','images/skirt.png'),('prod_010','catg_001','comp_012',10000,6,'#cupboard',500,'cupboard','images/cupboard.png'),('prod_011','catg_004','comp_017',40,6,'#broom',500,'broom','images/broom.png'),('prod_012','catg_007','comp_035',400,5,'#bracelet',500,'bracelet','images/bracelet.png'),('prod_013','catg_004','comp_024',10,6,'#soap',500,'soap','images/soap.png'),('prod_014','catg_003','comp_001',25000,6,'#mobile',500,'mobile','images/mobile.png'),('prod_015','catg_006','comp_008',200,5,'#snakes&ladders',500,'snakes & ladders','images/snakes & ladders.png'),('prod_016','catg_008','comp_007',500,5,'#mirrorart',500,'mirror art','images/mirror art.png'),('prod_017','catg_002','comp_010',50,9,'#rice',500,'rice','images/rice.png'),('prod_018','catg_004','comp_040',300,6,'#shampoo',500,'shampoo','images/shampoo.png'),('prod_019','catg_008','comp_025',2000,5,'#painting',500,'painting','images/painting.png'),('prod_020','catg_003','comp_004',50000,6,'#laptop',500,'laptop','images/laptop.png'),('prod_021','catg_004','comp_043',500,6,'#oil',500,'oil','images/oil.png'),('prod_022','catg_001','comp_033',2500,6,'#table',500,'table','images/table.png'),('prod_023','catg_001','comp_042',1000,6,'#chair',500,'chair','images/chair.png'),('prod_024','catg_008','comp_030',2500,5,'#sculpture',500,'sculpture','images/sculpture.png'),('prod_025','catg_007','comp_036',2500,5,'#bags',500,'bags','images/bags.png'),('prod_026','catg_001','comp_048',15000,6,'#sofa',500,'sofa','images/sofa.png'),('prod_027','catg_003','comp_021',25000,6,'#tablet',500,'tablet','images/tablet.png'),('prod_028','catg_003','comp_057',40000,6,'#airconditioner',500,'air conditioner','images/air conditioner.png'),('prod_029','catg_002','comp_013',30,9,'#wheat',500,'wheat','images/wheat.png'),('prod_030','catg_007','comp_045',450,5,'#bands',500,'bands','images/bands.png'),('prod_031','catg_003','comp_066',45000,6,'#washingmachine',500,'washing machine','images/washing machine.png'),('prod_032','catg_002','comp_016',10,9,'#biscuit',500,'biscuit','images/biscuit.png'),('prod_033','catg_005','comp_022',1500,9,'#coat',500,'coat','images/coat.png'),('prod_034','catg_004','comp_044',40,6,'#washingcloth',500,'washing cloth','images/washing cloth.png'),('prod_035','catg_005','comp_034',200,9,'#socks',500,'socks','images/socks.png'),('prod_036','catg_006','comp_020',300,5,'#chess',500,'chess','images/chess.png'),('prod_037','catg_002','comp_018',40,9,'#bread',500,'bread','images/bread.png'),('prod_038','catg_006','comp_023',1000,5,'#minirobot',500,'mini robot','images/mini robot.png'),('prod_039','catg_008','comp_039',1000,5,'#pottedplant',500,'potted plant','images/potted plant.png'),('prod_040','catg_008','comp_051',1500,5,'#lamp',500,'lamp','images/lamp.png');
+INSERT INTO `product` VALUES ('prod_001','catg_005','comp_011',500,9,'#shirt',500,'shirt','images/shirt.png'),('prod_002','catg_002','comp_005',400,9,'#dals',500,'dals','images/dals.png'),('prod_003','catg_006','comp_006',400,5,'#toycar',500,'toy car','images/toy car.png'),('prod_004','catg_007','comp_002',1500,5,'#perfume',500,'perfume','images/perfume.png'),('prod_005','catg_006','comp_006',350,5,'#ludo',500,'ludo','images/ludo.png'),('prod_006','catg_007','comp_015',2000,5,'#watch',500,'watch','images/watch.png'),('prod_007','catg_001','comp_009',35000,6,'#bed',500,'bed','images/bed.png'),('prod_008','catg_005','comp_014',1000,9,'#jeans',500,'jeans','images/jeans.png'),('prod_009','catg_005','comp_019',400,9,'#skirt',500,'skirt','images/skirt.png'),('prod_010','catg_001','comp_012',10000,6,'#cupboard',500,'cupboard','images/cupboard.png'),('prod_011','catg_004','comp_017',40,6,'#broom',500,'broom','images/broom.png'),('prod_012','catg_007','comp_035',400,5,'#bracelet',500,'bracelet','images/bracelet.png'),('prod_013','catg_004','comp_024',10,6,'#soap',500,'soap','images/soap.png'),('prod_014','catg_003','comp_001',25000,6,'#mobile',500,'mobile','images/mobile.png'),('prod_015','catg_006','comp_008',200,5,'#snakes&ladders',500,'snakes & ladders','images/snakes & ladders.png'),('prod_016','catg_008','comp_007',500,5,'#mirrorart',500,'mirror art','images/mirror art.png'),('prod_017','catg_002','comp_010',50,9,'#rice',500,'rice','images/rice.png'),('prod_019','catg_008','comp_025',2000,5,'#painting',500,'painting','images/painting.png'),('prod_020','catg_003','comp_004',50000,6,'#laptop',500,'laptop','images/laptop.png'),('prod_021','catg_004','comp_043',500,6,'#oil',500,'oil','images/oil.png'),('prod_022','catg_001','comp_033',2500,6,'#table',500,'table','images/table.png'),('prod_023','catg_001','comp_042',1000,6,'#chair',500,'chair','images/chair.png'),('prod_024','catg_008','comp_030',2500,5,'#sculpture',500,'sculpture','images/sculpture.png'),('prod_025','catg_007','comp_036',2500,5,'#bags',500,'bags','images/bags.png'),('prod_026','catg_001','comp_048',15000,6,'#sofa',500,'sofa','images/sofa.png'),('prod_027','catg_003','comp_021',25000,6,'#tablet',500,'tablet','images/tablet.png'),('prod_028','catg_003','comp_057',40000,6,'#airconditioner',500,'air conditioner','images/air conditioner.png'),('prod_029','catg_002','comp_013',30,9,'#wheat',500,'wheat','images/wheat.png'),('prod_030','catg_007','comp_045',450,5,'#bands',500,'bands','images/bands.png'),('prod_031','catg_003','comp_066',45000,6,'#washingmachine',500,'washing machine','images/washing machine.png'),('prod_032','catg_002','comp_016',10,9,'#biscuit',500,'biscuit','images/biscuit.png'),('prod_033','catg_005','comp_022',1500,9,'#coat',500,'coat','images/coat.png'),('prod_034','catg_004','comp_044',40,6,'#washingcloth',500,'washing cloth','images/washing cloth.png'),('prod_036','catg_006','comp_020',300,5,'#chess',500,'chess','images/chess.png'),('prod_037','catg_002','comp_018',40,9,'#bread',500,'bread','images/bread.png'),('prod_038','catg_006','comp_023',1000,5,'#minirobot',500,'mini robot','images/mini robot.png'),('prod_039','catg_008','comp_039',1000,5,'#pottedplant',500,'potted plant','images/potted plant.png'),('prod_040','catg_008','comp_051',1500,5,'#lamp',500,'lamp','images/lamp.png');
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -284,6 +322,7 @@ CREATE TABLE `rating` (
   `current_rating` float DEFAULT NULL,
   `rating_count` int DEFAULT NULL,
   PRIMARY KEY (`product_id`),
+  KEY `rating_index` (`current_rating`),
   CONSTRAINT `ratingProductID` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -297,6 +336,18 @@ LOCK TABLES `rating` WRITE;
 INSERT INTO `rating` VALUES ('prod_001',4.28,66),('prod_002',3.24,52),('prod_003',1.21,41),('prod_004',3.27,4),('prod_006',3.15,89),('prod_007',2.39,39),('prod_009',3.12,65),('prod_010',2.89,53),('prod_011',2.35,75),('prod_013',3.68,42),('prod_014',0.28,64),('prod_015',0.33,51),('prod_016',2.3,54),('prod_017',3.33,5),('prod_018',4.61,14),('prod_019',3.36,85),('prod_020',2.89,45),('prod_021',1.74,86),('prod_022',0.65,53),('prod_023',0.7,86),('prod_024',0.14,66),('prod_025',0.74,56),('prod_026',2.17,61),('prod_027',1.74,65),('prod_028',1.91,13),('prod_029',4.22,91),('prod_030',3.75,83),('prod_031',2.91,44),('prod_032',1.76,47),('prod_034',2.07,47),('prod_035',4.61,90),('prod_036',2.86,2),('prod_037',2.76,38),('prod_039',1.34,18),('prod_040',4.59,77);
 /*!40000 ALTER TABLE `rating` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Temporary view structure for view `transaction_amount`
+--
+
+DROP TABLE IF EXISTS `transaction_amount`;
+/*!50001 DROP VIEW IF EXISTS `transaction_amount`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `transaction_amount` AS SELECT 
+ 1 AS `total_amount`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Table structure for table `transaction_info`
@@ -314,7 +365,8 @@ CREATE TABLE `transaction_info` (
   `status` varchar(50) DEFAULT NULL,
   KEY `transactionsTransactionID` (`transaction_id`),
   KEY `transactionsCustomerID` (`customer_id`),
-  KEY `transactionsProductID` (`product_id`),
+  KEY `check_status` (`status`),
+  KEY `transaction_index` (`product_id`),
   CONSTRAINT `transactionsCustomerID` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`),
   CONSTRAINT `transactionsProductID` FOREIGN KEY (`product_id`) REFERENCES `product` (`product_id`),
   CONSTRAINT `transactionsTransactionID` FOREIGN KEY (`transaction_id`) REFERENCES `transactions` (`transaction_id`)
@@ -349,6 +401,7 @@ CREATE TABLE `transactions` (
   KEY `ordersCustomerID` (`customer_id`),
   KEY `ordersAddressID` (`address_id`),
   KEY `ordersBankID_idx` (`bank_id`),
+  KEY `transaction_date` (`date`),
   CONSTRAINT `ordersAddressID` FOREIGN KEY (`address_id`) REFERENCES `address` (`address_id`),
   CONSTRAINT `ordersBankID` FOREIGN KEY (`bank_id`) REFERENCES `bank` (`bank_id`),
   CONSTRAINT `ordersCustomerID` FOREIGN KEY (`customer_id`) REFERENCES `customers` (`customer_id`)
@@ -373,8 +426,23 @@ UNLOCK TABLES;
 /*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
 /*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
 DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `clear` AFTER INSERT ON `transactions` FOR EACH ROW Delete from cart */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
 /*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `clear_cart` AFTER INSERT ON `transactions` FOR EACH ROW Delete from cart
-Where cart.customer_id="cust_002" */;;
+	Where cart.customer_id=transaction.customer_id */;;
 DELIMITER ;
 /*!50003 SET sql_mode              = @saved_sql_mode */ ;
 /*!50003 SET character_set_client  = @saved_cs_client */ ;
@@ -391,7 +459,8 @@ SET @saved_cs_client     = @@character_set_client;
 /*!50503 SET character_set_client = utf8mb4 */;
 /*!50001 CREATE VIEW `v` AS SELECT 
  1 AS `product_id`,
- 1 AS `company_id`*/;
+ 1 AS `company_id`,
+ 1 AS `discount`*/;
 SET character_set_client = @saved_cs_client;
 
 --
@@ -401,6 +470,60 @@ SET character_set_client = @saved_cs_client;
 --
 -- Dumping routines for database 'dbmsproject'
 --
+
+--
+-- Final view structure for view `average_view`
+--
+
+/*!50001 DROP VIEW IF EXISTS `average_view`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `average_view` AS select `product`.`product_id` AS `product_id`,`product`.`category_id` AS `category_id`,`product`.`company_id` AS `company_id`,`product`.`current_price` AS `current_price`,`product`.`discount` AS `discount`,`product`.`tags` AS `tags`,`product`.`quantity` AS `quantity`,`product`.`product_name` AS `product_name`,`product`.`image` AS `image`,avg(`product`.`current_price`) AS `avg_price` from `product` group by `product`.`category_id` order by `avg_price` desc */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `discounted_view`
+--
+
+/*!50001 DROP VIEW IF EXISTS `discounted_view`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `discounted_view` AS select `product`.`product_name` AS `product_name`,`product`.`current_price` AS `current_price`,`product`.`discount` AS `discount` from `product` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
+
+--
+-- Final view structure for view `transaction_amount`
+--
+
+/*!50001 DROP VIEW IF EXISTS `transaction_amount`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `transaction_amount` AS select sum(`transactions`.`total`) AS `total_amount` from `transactions` where ((`transactions`.`date` < curdate()) and (`transactions`.`date` > (curdate() - interval 1 day))) */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 
 --
 -- Final view structure for view `v`
@@ -415,7 +538,7 @@ SET character_set_client = @saved_cs_client;
 /*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
 /*!50001 CREATE ALGORITHM=UNDEFINED */
 /*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
-/*!50001 VIEW `v` AS select `product`.`product_id` AS `product_id`,`product`.`company_id` AS `company_id` from `product` */;
+/*!50001 VIEW `v` AS select `product`.`product_id` AS `product_id`,`product`.`company_id` AS `company_id`,`product`.`discount` AS `discount` from `product` order by `product`.`discount` desc */;
 /*!50001 SET character_set_client      = @saved_cs_client */;
 /*!50001 SET character_set_results     = @saved_cs_results */;
 /*!50001 SET collation_connection      = @saved_col_connection */;
@@ -429,4 +552,4 @@ SET character_set_client = @saved_cs_client;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-01 18:24:18
+-- Dump completed on 2022-05-01 22:08:38
