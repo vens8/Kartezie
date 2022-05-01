@@ -603,15 +603,11 @@ def fillCategories():
         print(i)
         print(i.image)
         if id_count % 2 == 0:
-            categoriesTree.insert('', 'end', text="#0's text", image=._img,
-                             value=("A's value", "B's value"))
-            # categoriesTree.insert(parent='', index="end", iid=id_count, open=True, text=i.categoryName,
-            #              image=ImageTk.PhotoImage(file=i.image))
+            categoriesTree.insert(parent='', index="end", iid=id_count, open=True, text=i.categoryName,
+                         image=ImageTk.PhotoImage(file=i.image))
         else:
-            # categoriesTree.insert(parent='', index="end", iid=id_count, open=True, text=i.categoryName,
-            #              image=ImageTk.PhotoImage(file=i.image))
-            categoriesTree.insert('', 'end', text="#0's text", image=_img,
-                                  value=("A's value", "B's value"))
+            categoriesTree.insert(parent='', index="end", iid=id_count, open=True, text=i.categoryName,
+                         image=ImageTk.PhotoImage(file=i.image))
         id_count += 1
         # if id_count > 0:
         #     sep = ttk.Separator(categoriesTree, orient='horizontal')
