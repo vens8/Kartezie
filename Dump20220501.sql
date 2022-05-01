@@ -257,7 +257,8 @@ CREATE TABLE `product` (
   KEY `productCategoryID` (`category_id`),
   KEY `productCompanyID` (`company_id`),
   CONSTRAINT `productCategoryID` FOREIGN KEY (`category_id`) REFERENCES `category` (`category_id`),
-  CONSTRAINT `productCompanyID` FOREIGN KEY (`company_id`) REFERENCES `company` (`company_id`)
+  CONSTRAINT `productCompanyID` FOREIGN KEY (`company_id`) REFERENCES `company` (`company_id`),
+  CONSTRAINT `productQuantity` CHECK ((`quantity` >= 0))
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -293,6 +294,7 @@ CREATE TABLE `rating` (
 
 LOCK TABLES `rating` WRITE;
 /*!40000 ALTER TABLE `rating` DISABLE KEYS */;
+INSERT INTO `rating` VALUES ('prod_001',4.28,66),('prod_002',3.24,52),('prod_003',1.21,41),('prod_004',3.27,4),('prod_006',3.15,89),('prod_007',2.39,39),('prod_009',3.12,65),('prod_010',2.89,53),('prod_011',2.35,75),('prod_013',3.68,42),('prod_014',0.28,64),('prod_015',0.33,51),('prod_016',2.3,54),('prod_017',3.33,5),('prod_018',4.61,14),('prod_019',3.36,85),('prod_020',2.89,45),('prod_021',1.74,86),('prod_022',0.65,53),('prod_023',0.7,86),('prod_024',0.14,66),('prod_025',0.74,56),('prod_026',2.17,61),('prod_027',1.74,65),('prod_028',1.91,13),('prod_029',4.22,91),('prod_030',3.75,83),('prod_031',2.91,44),('prod_032',1.76,47),('prod_034',2.07,47),('prod_035',4.61,90),('prod_036',2.86,2),('prod_037',2.76,38),('prod_039',1.34,18),('prod_040',4.59,77);
 /*!40000 ALTER TABLE `rating` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -325,6 +327,7 @@ CREATE TABLE `transaction_info` (
 
 LOCK TABLES `transaction_info` WRITE;
 /*!40000 ALTER TABLE `transaction_info` DISABLE KEYS */;
+INSERT INTO `transaction_info` VALUES ('tran_001','cust_012','prod_019',2000,2,'delivered'),('tran_001','cust_012','prod_014',25000,1,'delivered'),('tran_001','cust_012','prod_032',10,30,'delivered'),('tran_002','cust_042','prod_036',300,2,'returned'),('tran_002','cust_042','prod_040',1500,10,'returned'),('tran_003','cust_180','prod_024',2500,2,'delivered'),('tran_004','cust_033','prod_037',40,15,'ordered'),('tran_004','cust_033','prod_022',2500,4,'ordered'),('tran_005','cust_109','prod_002',400,3,'delivered'),('tran_005','cust_109','prod_023',1000,6,'delivered'),('tran_006','cust_154','prod_029',30,5,'dispatched'),('tran_008','cust_057','prod_021',500,3,'dispatched'),('tran_008','cust_057','prod_031',45000,1,'dispatched'),('tran_008','cust_057','prod_003',400,2,'dispatched'),('tran_008','cust_057','prod_008',1000,3,'dispatched'),('tran_003','cust_180','prod_036',25000,1,'returned'),('tran_003','cust_158','prod_002',25000,1,'returned');
 /*!40000 ALTER TABLE `transaction_info` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -342,7 +345,6 @@ CREATE TABLE `transactions` (
   `bank_id` char(8) DEFAULT NULL,
   `date` date DEFAULT NULL,
   `total` float DEFAULT NULL,
-  `status` varchar(45) DEFAULT NULL,
   PRIMARY KEY (`transaction_id`),
   KEY `ordersCustomerID` (`customer_id`),
   KEY `ordersAddressID` (`address_id`),
@@ -359,8 +361,38 @@ CREATE TABLE `transactions` (
 
 LOCK TABLES `transactions` WRITE;
 /*!40000 ALTER TABLE `transactions` DISABLE KEYS */;
+INSERT INTO `transactions` VALUES ('tran_001','cust_012','addr_100','bank_050','2022-03-24',27010),('tran_002','cust_042','addr_037','bank_047','2022-04-30',1800),('tran_003','cust_180','addr_048','bank_011','2022-05-10',2500),('tran_004','cust_033','addr_095','bank_024','2022-04-20',2540),('tran_005','cust_109','addr_093','bank_009','2022-03-23',1400),('tran_006','cust_154','addr_023','bank_017','2022-05-20',30),('tran_008','cust_057','addr_020','bank_023','2022-05-13',46900);
 /*!40000 ALTER TABLE `transactions` ENABLE KEYS */;
 UNLOCK TABLES;
+/*!50003 SET @saved_cs_client      = @@character_set_client */ ;
+/*!50003 SET @saved_cs_results     = @@character_set_results */ ;
+/*!50003 SET @saved_col_connection = @@collation_connection */ ;
+/*!50003 SET character_set_client  = utf8mb4 */ ;
+/*!50003 SET character_set_results = utf8mb4 */ ;
+/*!50003 SET collation_connection  = utf8mb4_0900_ai_ci */ ;
+/*!50003 SET @saved_sql_mode       = @@sql_mode */ ;
+/*!50003 SET sql_mode              = 'STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION' */ ;
+DELIMITER ;;
+/*!50003 CREATE*/ /*!50017 DEFINER=`root`@`localhost`*/ /*!50003 TRIGGER `clear_cart` AFTER INSERT ON `transactions` FOR EACH ROW Delete from cart
+Where cart.customer_id="cust_002" */;;
+DELIMITER ;
+/*!50003 SET sql_mode              = @saved_sql_mode */ ;
+/*!50003 SET character_set_client  = @saved_cs_client */ ;
+/*!50003 SET character_set_results = @saved_cs_results */ ;
+/*!50003 SET collation_connection  = @saved_col_connection */ ;
+
+--
+-- Temporary view structure for view `v`
+--
+
+DROP TABLE IF EXISTS `v`;
+/*!50001 DROP VIEW IF EXISTS `v`*/;
+SET @saved_cs_client     = @@character_set_client;
+/*!50503 SET character_set_client = utf8mb4 */;
+/*!50001 CREATE VIEW `v` AS SELECT 
+ 1 AS `product_id`,
+ 1 AS `company_id`*/;
+SET character_set_client = @saved_cs_client;
 
 --
 -- Dumping events for database 'dbmsproject'
@@ -369,6 +401,24 @@ UNLOCK TABLES;
 --
 -- Dumping routines for database 'dbmsproject'
 --
+
+--
+-- Final view structure for view `v`
+--
+
+/*!50001 DROP VIEW IF EXISTS `v`*/;
+/*!50001 SET @saved_cs_client          = @@character_set_client */;
+/*!50001 SET @saved_cs_results         = @@character_set_results */;
+/*!50001 SET @saved_col_connection     = @@collation_connection */;
+/*!50001 SET character_set_client      = utf8mb4 */;
+/*!50001 SET character_set_results     = utf8mb4 */;
+/*!50001 SET collation_connection      = utf8mb4_0900_ai_ci */;
+/*!50001 CREATE ALGORITHM=UNDEFINED */
+/*!50013 DEFINER=`root`@`localhost` SQL SECURITY DEFINER */
+/*!50001 VIEW `v` AS select `product`.`product_id` AS `product_id`,`product`.`company_id` AS `company_id` from `product` */;
+/*!50001 SET character_set_client      = @saved_cs_client */;
+/*!50001 SET character_set_results     = @saved_cs_results */;
+/*!50001 SET collation_connection      = @saved_col_connection */;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -379,4 +429,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-05-01 11:58:53
+-- Dump completed on 2022-05-01 18:24:18
