@@ -186,7 +186,7 @@ class Product:
         self.image = image
         self.quantity = quantity
         self.discount = discount
-        self.currentPrice = currentPrice * (1 - (discount/100))
+        self.currentPrice = round(currentPrice * (1 - (discount/100)), 2)
         self.company = company
         self.category = category
         self.productName = productName
@@ -621,6 +621,7 @@ def fillCategories():
             categoriesTree.insert(parent='', index="end", iid=id_count, open=True, text=i.categoryID,
                          image=ImageTk.PhotoImage(file=i.image), value=(i.image, i.categoryName), tags=('odd',))
         id_count += 1
+
         if id_count > 0:
             sep = ttk.Separator(categoriesTree, orient='horizontal')
             sep.grid(sticky="news")
@@ -874,13 +875,16 @@ selectCategoryButton.configure(image=img5)
 
 # Tree view table
 productsTree = ttk.Treeview(productsTreeFrame, yscrollcommand=productScroll.set)
-productsTree['columns'] = ("Image", "Product")
+productsTree['columns'] = ("Image", "Product", "Price")
 productsTree.column("#0", width=0, anchor=W)
 productsTree.column("Image", anchor=W, width=100)
 productsTree.column("Product", anchor=W, width=50)
+productsTree.column("Price", anchor=W, width=50)
 productsTree.heading("#0", text="Product ID", anchor=W)
 productsTree.heading("Image", text="Image", anchor=W)
 productsTree.heading("Product", text="Product", anchor=W)
+productsTree.heading("Price", text="Price", anchor=W)
+
 productScroll.config(command=productsTree.yview)
 # style = ttk.Style()
 style.theme_use("clam")
@@ -990,29 +994,29 @@ cartTree.place(relx=0, rely=0, relwidth=0.8, relheight=0.6)
 
 
 def fillProducts(productRecords):
+    for i in productsTree.get_children():  # Clear table
+        productsTree.delete(i)
     global products  # list of category objects
-
     auxProduct = []
     for i in productRecords:
         for j in products:
             if i[0] == j.productID:
                 auxProduct.append(j)
 
-    products = auxProduct
-
-    for i in productsTree.get_children():  # Clear table
-        productsTree.delete(i)
-
     id_count = 0  # Parent
 
-    for i in products:
+    for i in auxProduct:
         if id_count % 2 == 0:
+            pImage = Image.open(i.image)
+            productImage = ImageTk.PhotoImage(pImage)
             productsTree.insert(parent='', index="end", iid=id_count, open=True, text=i.productID,
-                                  image=ImageTk.PhotoImage(file=i.image), value=(i.image, i.productName),
+                                  image=productImage, value=(i.image, i.productName.capitalize(), i.currentPrice),
                                   tags=('even',))
         else:
+            pImage = Image.open(i.image)
+            productImage = ImageTk.PhotoImage(pImage)
             productsTree.insert(parent='', index="end", iid=id_count, open=True, text=i.productID,
-                                  image=ImageTk.PhotoImage(file=i.image), value=(i.image, i.productName),
+                                  image=productImage, value=(i.image, i.productName.capitalize(), i.currentPrice),
                                   tags=('odd',))
         id_count += 1
         if id_count > 0:
@@ -1029,11 +1033,11 @@ def fillCart():
     for i in cart:
         if id_count % 2 == 0:
             cartTree.insert(parent='', index="end", iid=id_count, open=True, text=i.productID,
-                                  image=ImageTk.PhotoImage(file=i.image), value=(i.image, i.productName, i.quantity, i.price),
+                                  image=ImageTk.PhotoImage(file=i.image), value=(i.image, i.productName, i.quantity, f"{i.price} * {i.quantity} = {i.quantity * i.price}"),
                                   tags=('even',))
         else:
             cartTree.insert(parent='', index="end", iid=id_count, open=True, text=i.productID,
-                                  image=ImageTk.PhotoImage(file=i.image), value=(i.image, i.productName, i.quantity, i.price),
+                                  image=ImageTk.PhotoImage(file=i.image), value=(i.image, i.productName, i.quantity, f"{i.price} * {i.quantity} = {i.quantity * i.price}"),
                                   tags=('odd',))
         id_count += 1
         if id_count > 0:
@@ -1055,23 +1059,25 @@ def selectCategory():
 def addToCart():
     global cart
 
-    def checkDuplicate(index):
+    def checkDuplicate(productID):
         for x in cart:
-            if x.productID == products[index].productID:
+            if x.productID == productID:
                 x.quantity += 1
                 return True
 
     if productsTree.selection() != ():
         selectedProducts = productsTree.selection()
-        for index in selectedProducts:
-            if not checkDuplicate(int(index)):
-                item = Item(currentUser.customerID, products[int(index)].productID, products[int(index)].currentPrice, 1, products[int(index)].image, products[int(index)].productName)
-                cart.append(item)
+        for row in selectedProducts:
+            for product in products:
+                if product.productID == productsTree.item(row)["text"]:
+                    if not checkDuplicate(product.productID):
+                        item = Item(currentUser.customerID, product.productID, product.currentPrice, 1, product.image, product.productName)
+                        cart.append(item)
+                    break
 
         messagebox.showinfo("Added to Cart", "Your items have successfully been added to your cart!")
         for i in productsTree.get_children():  # Clear products table
             productsTree.delete(i)
-
         fillCart()
 
     else:
